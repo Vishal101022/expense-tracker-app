@@ -16,9 +16,22 @@ const InputForm = () => {
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
   };
-  
+   
+  // handle expense_data on submit
+  const submitHandler = (event) => {
+    // stoping default submit 
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="input-form_controls">
         <div className="input-form_control">
           <label>Title</label>
