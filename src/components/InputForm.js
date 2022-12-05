@@ -16,10 +16,10 @@ const InputForm = () => {
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
   };
-   
+
   // handle expense_data on submit
   const submitHandler = (event) => {
-    // stoping default submit 
+    // stoping default submit
     event.preventDefault();
 
     const expenseData = {
@@ -28,6 +28,10 @@ const InputForm = () => {
       date: new Date(enteredDate),
     };
     console.log(expenseData);
+    // implement two way data binding in hook
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -35,7 +39,11 @@ const InputForm = () => {
       <div className="input-form_controls">
         <div className="input-form_control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            onChange={titleChangeHandler}
+            value={enteredTitle}
+          />
         </div>
         <div className="input-form_control">
           <label>Amount</label>
@@ -44,6 +52,7 @@ const InputForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
+            value={enteredAmount}
           />
         </div>
         <div className="input-form_control">
@@ -53,6 +62,7 @@ const InputForm = () => {
             min="2019-01-01"
             max="2022-12-31"
             onChange={dateChangeHandler}
+            value={enteredDate}
           />
         </div>
       </div>
