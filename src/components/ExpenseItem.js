@@ -1,17 +1,7 @@
-import { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
-const ExpenseItem = (props) => {
-  // function clickHandler()
-  const [title, setTitle] = useState(props.title);
-  
-  const clickHandler = (event) => {
-    setTitle('update');
-    console.log(event.target.value);
-  };
-
-
+function ExpenseItem(props) {
   return (
     <div className="expense-item">
       <ExpenseDate date={props.date} />
@@ -19,7 +9,6 @@ const ExpenseItem = (props) => {
         <h2>{props.title}</h2>
         <div className="expense-item_price">${props.amount}</div>
       </div>
-      <button onClick={clickHandler}>Change title</button>
     </div>
   );
 }
